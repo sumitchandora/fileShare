@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1 class="bg-gray-100 p-6 text-center font-bold text-3xl">Share Your Files From Here!</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data" class="flex items-center flex-col gap-4 p-40">
+        <label for="upload" class="bg-blue-600 text-white font-bold py-2 px-4 rounded">
+            Upload your file
+        </label>
+        <input id="upload" type="file" name="inputField" class="hidden" required>
+        <span id="file-name" class="text-gray-700">No file selected</span>
+        <input 
+            type="text" 
+            placeholder="Write the email address here..." 
+            required
+            class="w-[300px] p-2 bg-gray-200 text-black placeholder-black-200 rounded p-3"
+            name="emailReceiver"
+        >
+        <input type="submit" value="send" class="bg-green-600 text-white font-bold py-1 px-2 rounded">
+    </form>
+    <script>
+        const fileInput = document.getElementById('upload');
+        const fileName = document.getElementById('file-name');
+    
+        fileInput.addEventListener('change', () => {
+          if (fileInput.files.length > 0) {
+            fileName.textContent = fileInput.files[0].name;
+          } else {
+            fileName.textContent = 'No file selected';
+          }
+        });
+      </script>
+</body>
+</html>
